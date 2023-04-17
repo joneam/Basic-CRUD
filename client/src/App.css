@@ -10,7 +10,7 @@ h1 {
 }
 
 hr {
-	width: 90%;
+	width: 95%;
 }
 
 .entryComponent {
@@ -41,14 +41,34 @@ hr {
 }
 
 .studentList {
-	display: flex;
-	width: 500px;
+	width: 550px;
 	height: auto;
-	background-color: darkgray;
-	border: 1px dashed black;
-	padding: 20px;
+	border: 1px solid grey;
+	margin: 10px;
+	display: flex;
+	padding: 5px;
+	font-family: 'Courier New', Courier, monospace;
+	align-self: center;
+	background-color: lightgrey;
 }
 
-.studentList h3 {
-	margin: 20px;
+.studentTable {
+	margin: 10px;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	text-align: center;
+}
+
+.tableInput {
+	display: flex;
+	align-items: right;
+	justify-content: right;
+	align-self: right;
+}
+
+th,
+td {
+	border-right: 1px solid grey;
+	margin: 10px;
 }

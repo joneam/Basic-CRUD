@@ -44,6 +44,7 @@ app.get('/students', (req, res) => {
 
 app.put('/update', (req, res) => {
 	const id = req.body.id;
+	const grade = req.body.grade;
 	db.query(
 		'UPDATE students SET grade = ? WHERE id = ?',
 		[grade, id],

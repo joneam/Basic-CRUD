@@ -8,9 +8,7 @@ function App() {
 	const [name, setName] = useState('');
 	const [studentClass, setStudentClass] = useState('');
 	const [grade, setGrade] = useState('');
-
 	const [studentList, setStudentList] = useState([]);
-
 	const [newGrade, setNewGrade] = useState('');
 
 	const addStudent = () => {
@@ -50,9 +48,9 @@ function App() {
 					return val.id === id
 						? {
 								id: val.id,
-								studentNum: studentNum,
-								name: name,
-								studentClass: studentClass,
+								studentNum: val.studentNum,
+								name: val.name,
+								studentClass: val.studentClass,
 								grade: newGrade,
 						  }
 						: val;
@@ -71,38 +69,16 @@ function App() {
 		});
 	};
 
+	const studentFields = [
+		{ fieldText: 'Student Number', fieldState: { setStudentNum } },
+		{ fieldText: 'Name', fieldState: { setName } },
+		{ fieldText: 'Class', fieldState: { setStudentClass } },
+		{ fieldText: 'Grade', fieldState: { setGrade } },
+	];
+
 	return (
 		<div className='App'>
 			<h1>Student Grade Tracker!</h1>
-			{/* ----Static HTML---- */}
-			{/* <label className='entryComponent'>Student Number: </label>
-			<input
-				className='entryInput'
-				onChange={(e) => {
-					setStudentNum(e.target.value);
-				}}
-			></input>
-			<label className='entryComponent'>Name: </label>
-			<input
-				className='entryInput'
-				onChange={(e) => {
-					setName(e.target.value);
-				}}
-			/>
-			<label className='entryComponent'>Class: </label>
-			<input
-				className='entryInput'
-				onChange={(e) => {
-					setStudentClass(e.target.value);
-				}}
-			></input>
-			<label className='entryComponent'>Grade: </label>
-			<input
-				className='entryInput'
-				onChange={(e) => {
-					setGrade(e.target.value);
-				}}
-			></input> */}
 			{/* ----Components---- */}
 			<Entry
 				text='Student Number'
@@ -120,6 +96,15 @@ function App() {
 				text='Grade'
 				stateText={setGrade}
 			/>
+			{/* ---- Mapped Components ---- */}
+			{/* {studentFields.map((student) => {
+				return (
+					<Entry
+						text={studentFields.fieldText}
+						stateText={studentFields.fieldState}
+					/>
+				);
+			})} */}
 			<button
 				className='button'
 				onClick={addStudent}
@@ -137,34 +122,43 @@ function App() {
 			{studentList.map((val, key) => {
 				return (
 					<div className='studentList'>
-						<div>
-							<h3>{val.studentNum}</h3>
-							<h3>{val.name}</h3>
-							<h3>{val.studentClass}</h3>
-							<h3>{val.grade}</h3>
-						</div>
-						<div>
-							<input
-								placeholder='enter amount'
-								onChange={(e) => {
-									setNewGrade(e.target.value);
-								}}
-							/>
-							<button
-								onClick={() => {
-									updateGrade(val.id);
-								}}
-							>
-								Update Grade
-							</button>
-							<button
-								onClick={() => {
-									deleteStudent(val.id);
-								}}
-							>
-								Delete
-							</button>
-						</div>
+						<table className='studentTable'>
+							<tr className='tableInput'>
+								<input
+									placeholder='enter grade'
+									onChange={(e) => {
+										setNewGrade(e.target.value);
+									}}
+								/>
+								<button
+									onClick={() => {
+										updateGrade(val.id);
+									}}
+								>
+									Update Grade
+								</button>
+								<button
+									onClick={() => {
+										deleteStudent(val.id);
+									}}
+								>
+									Delete
+								</button>
+							</tr>
+							<br />
+							<tr>
+								<th>Student Number</th>
+								<th>Name</th>
+								<th>Class</th>
+								<th>Grade</th>
+							</tr>
+							<tr>
+								<td>{val.student_number}</td>
+								<td>{val.name}</td>
+								<td>{val.class}</td>
+								<td>{val.grade}</td>
+							</tr>
+						</table>
 					</div>
 				);
 			})}
