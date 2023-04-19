@@ -123,6 +123,19 @@ function App() {
 				return (
 					<div className='studentList'>
 						<table className='studentTable'>
+							<tr>
+								<th>Name</th>
+								<th>Student Number</th>
+								<th>Class</th>
+								<th>Grade</th>
+							</tr>
+							<tr>
+								<td>{val.name}</td>
+								<td>{val.student_number}</td>
+								<td>{val.class}</td>
+								<td>{val.grade}</td>
+							</tr>
+							<br />
 							<tr className='tableInput'>
 								<input
 									placeholder='enter grade'
@@ -142,21 +155,8 @@ function App() {
 										deleteStudent(val.id);
 									}}
 								>
-									Delete
+									Delete Student
 								</button>
-							</tr>
-							<br />
-							<tr>
-								<th>Student Number</th>
-								<th>Name</th>
-								<th>Class</th>
-								<th>Grade</th>
-							</tr>
-							<tr>
-								<td>{val.student_number}</td>
-								<td>{val.name}</td>
-								<td>{val.class}</td>
-								<td>{val.grade}</td>
 							</tr>
 						</table>
 					</div>
