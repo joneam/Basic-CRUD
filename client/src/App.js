@@ -45,12 +45,12 @@ function App() {
 			alert('updated!');
 			setStudentList(
 				studentList.map((val) => {
-					return val.id === id
+					return val.id == id
 						? {
 								id: val.id,
-								studentNum: val.studentNum,
+								studentNum: val.student_number,
 								name: val.name,
-								studentClass: val.studentClass,
+								studentClass: val.class,
 								grade: newGrade,
 						  }
 						: val;
@@ -63,7 +63,7 @@ function App() {
 		Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
 			setStudentList(
 				studentList.filter((val) => {
-					return val.id !== id;
+					return val.id != id;
 				})
 			);
 		});
